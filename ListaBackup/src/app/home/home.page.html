@@ -1,0 +1,65 @@
+<ion-content color="medium" [fullscreen]="true">
+
+
+  <div id="posicionamento">
+    <div id="titulo">
+      <ion-title color="light" size="large">Lista de compras</ion-title>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input placeholder="Produto" [(ngModel)]="texto" (keyup.enter)="adiciona()"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-input placeholder="Preço" [(ngModel)]="preco" (keyup.enter)="adiciona()"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button color="primary" size="medium" (click)="adiciona()">
+            <ion-icon name="bag-add-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let elemento_da_lista of variavel_lista;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  {{elemento_da_lista[1][0]}}
+                  <!-- Exibir Nome do item da lista-->
+                </ion-col>
+                <ion-col size="3">
+                  {{elemento_da_lista[1][1]}}
+                  <!-- Exibir Preço do item da lista-->
+                </ion-col>
+                <ion-col size="2">
+                  <ion-button color="danger" size="small" (click)="remove(elemento_da_lista[0][0])">
+                    <!-- envia como parâmetro o indice do elemento da lista-->
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              
+              </ion-grid>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-row>
+      <ion-col>
+        Valor Total: {{total}}
+      </ion-col>
+      <ion-button color="light">Finalizar compra! </ion-button>
+
+    </ion-row>
+
+
+
+   
+
+  </div>
+</ion-content>
